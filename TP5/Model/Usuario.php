@@ -157,9 +157,7 @@ class Usuario
 
         $sql = "UPDATE usuario SET usnombre= '{$this->getUsNombre()}', uspass= '{$this->getUsPass()}', usmail='{$this->getUsMail()}', usdeshabilitado=" . $deshabilitado;
         $sql .= " WHERE idusuario= {$this->getIdUsuario()};";
-        //echo $sql;
 
-        var_dump($sql);
 
         if ($base->Iniciar()) {
 

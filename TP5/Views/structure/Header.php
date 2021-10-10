@@ -2,9 +2,6 @@
 include_once("../../config.php");
 
 $userRol = $sesion->getRol();
-var_dump($userRol);
-var_dump($_SESSION);
-var_dump($sesion);
 ?>
 
 <!doctype html>
@@ -41,7 +38,7 @@ var_dump($sesion);
             <div class="collapse navbar-collapse" id="navbarExample01">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" aria-current="page" href="../index/Index.php">TP5</a>
+                        <a class="nav-link" aria-current="page" href="../index/paginaSeguro.php">TP5</a>
                     </li>
                     <?php if ($sesion->activa()) {
                         if ($userRol->getIdRol() == 1) {

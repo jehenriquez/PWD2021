@@ -31,7 +31,7 @@ include_once "../structure/Header.php";
             <h3>Modificar Usuario</h3>
         </div>
         <form id="formUser" name="formUser" method="post" action="../Accion/actualizarLogin.php"
-              onsubmit="return validarCambio();" novalidate>
+              onsubmit="return actualizarDatos();" novalidate>
             <div class="form-floating mb-3">
                 <input class="form-control" id="idusuario" name="idusuario" type="text"
                        value="<?php echo $datos['idusuario']; ?>" hidden>
@@ -46,7 +46,7 @@ include_once "../structure/Header.php";
             <div class="form-floating mb-3">
                 <input class="form-control" id="uspass" name="uspass" type="text" placeholder="password" required>
                 <label for="uspass">Password</label>
-                <div class="invalid-feedback">Ingrese una password válida.</div>
+                <div class="invalid-feedback">Ingrese una password válida: min 8 caracteres, letras y numeros.</div>
             </div>
             <div class="form-floating mb-3">
                 <input class="form-control" id="usmail" name="usmail" type="text" placeholder="email"
@@ -60,7 +60,7 @@ include_once "../structure/Header.php";
         </form>
     </div>
 
-    <script rel="script" src="js/validaciones.js"></script>
+    <script rel="script" src="../js/validaciones.js"></script>
 
 
 <?php

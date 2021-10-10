@@ -113,7 +113,6 @@ class UsuarioController
 
             if ($elObjtUsuario != null and $elObjtUsuario->modificar()) {
                 $resp = true;
-                var_dump($elObjtUsuario);
             }
         }
         return $resp;

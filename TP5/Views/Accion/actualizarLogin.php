@@ -4,7 +4,6 @@ include_once "../../Controller/UsuarioController.php";
 
 $sesion = new Session();
 
-print_r("actualizarLogin.php//////////");
 
 if (!$sesion->activa()) {
     header('Location: login.php');
@@ -31,9 +30,13 @@ if (!empty($datos)) {
 
 
 include_once "../structure/Header.php";
+echo "<div class='container'>";
+if ($exito) {
+    echo "<div class='alert alert-success mt-5' role='alert'><h3>Usuario modificado con éxito!</h3></div>";
+} else {
+    echo "<div class='alert alert-danger mt-5' role='alert'><h3>Ha ocurrido un error. Intentelo nuevamente</h3></div>";
+}
+echo "<div><form action='../index/listaUsuarios.php'><input type='submit' class='btn btn-primary' value='VOLVER'></form></div></div>";
 
-
-?>
-<?php
 include_once "../structure/Footer.php";
 ?>
