@@ -12,7 +12,7 @@ class Session
     public function iniciar($nombreUsuario, $psw)
     {
         $_SESSION['usnombre'] = $nombreUsuario;
-        $_SESSION['uspass'] = $psw;
+        $_SESSION['uspass'] = md5($psw);
         $_SESSION['activa'] = false;
         $_SESSION['err'] = null;
     }
@@ -96,6 +96,17 @@ class Session
             $resp = session_destroy();
         }
         return $resp;
+    }
+
+    public function actualizarSesion($usnombre, $uspass)
+    {
+        $_SESSION['usnombre'] = $usnombre;
+        $_SESSION['uspass'] = $uspass;
+    }
+
+    public function borrar()
+    {
+        session_unset();
     }
 }
 

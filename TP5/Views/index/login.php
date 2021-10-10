@@ -4,6 +4,8 @@ $sesion = new Session();
 if ($sesion->activa()) {
     header('Location: paginaSeguro.php');
     exit();
+} else {
+    $sesion->borrar();
 }
 include_once "../structure/Header.php";
 if (!is_null($err = $sesion->getErr())) {
@@ -30,9 +32,16 @@ if (!is_null($err = $sesion->getErr())) {
                             <div class="invalid-feedback">Ingrese una contraseña</div>
                         </div>
                         <div class="col-12">
-                            <button type="submit" class="btn btn-light float-end">Login</button>
+                            <button type="submit" class="btn btn-success w-100">Login</button>
                         </div>
                     </form>
+                    <div class="row">
+                        <form action="nuevoUsuario.php">
+                            <div>
+                                <button type="submit" class="btn btn-light w-100">Registrarse</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

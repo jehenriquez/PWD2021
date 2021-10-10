@@ -3,22 +3,30 @@ include_once "../../config.php";
 include_once "../../Controller/UsuarioController.php";
 
 $sesion = new Session();
+
+print_r("actualizarLogin.php//////////");
+
 if (!$sesion->activa()) {
     header('Location: login.php');
     exit();
 } else if ($sesion->getRol()->getIdRol() != 1) {
     header('Location: errorAcceso.php');
+    exit();
 }
 
 $datos = data_submitted();
-$datos['usdeshabilitado'] = null;
-
 $controller = new UsuarioController();
 
 $usuario = array();
-if(!empty($datos)){
+if (!empty($datos)) {
+    $datos['usdeshabilitado'] = null;
+    $usuarioSesion = $sesion->getUsuario()->getIdUsuario();
+
     $datos['uspass'] = md5($datos['uspass']);
-    $controller->modificacion($datos);
+    $exito = $controller->modificacion($datos);
+    if ($exito && $usuarioSesion == $datos['idusuario']) {
+        $sesion->actualizarSesion($datos['usnombre'], $datos['uspass']);
+    }
 }
 
 

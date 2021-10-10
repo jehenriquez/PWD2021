@@ -7,8 +7,19 @@ if (!$sesion->activa()) {
     exit();
 } else if ($sesion->getRol()->getIdRol() != 1) {
     header('Location: errorAcceso.php');
+    exit();
 }
+
 $datos = data_submitted();
+
+if (empty($datos)) {
+    header('Location: paginaSeguro.php');
+    exit();
+} else {
+    $controller = new UsuarioController();
+    $user = $controller->buscar($datos);
+}
+
 include_once "../structure/Header.php";
 
 
@@ -27,7 +38,8 @@ include_once "../structure/Header.php";
             </div>
 
             <div class="form-floating mb-3">
-                <input class="form-control" id="usnombre" name="usnombre" type="text" placeholder="Username" required>
+                <input class="form-control" id="usnombre" name="usnombre" type="text" placeholder="Username"
+                       value="<?php echo $user[0]->getUsNombre() ?>" required>
                 <label for="usnombre">Username</label>
                 <div class="invalid-feedback">Ingrese un username correcto.</div>
             </div>
@@ -37,7 +49,8 @@ include_once "../structure/Header.php";
                 <div class="invalid-feedback">Ingrese una password válida.</div>
             </div>
             <div class="form-floating mb-3">
-                <input class="form-control" id="usmail" name="usmail" type="text" placeholder="email" required>
+                <input class="form-control" id="usmail" name="usmail" type="text" placeholder="email"
+                       value="<?php echo $user[0]->getUsMail() ?>" required>
                 <label for="usmail">Email</label>
                 <div class="invalid-feedback">Ingrese un email válida.</div>
             </div>

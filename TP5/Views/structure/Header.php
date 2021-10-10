@@ -2,6 +2,9 @@
 include_once("../../config.php");
 
 $userRol = $sesion->getRol();
+var_dump($userRol);
+var_dump($_SESSION);
+var_dump($sesion);
 ?>
 
 <!doctype html>

@@ -127,8 +127,8 @@ class Usuario
     {
         $resp = false;
         $base = new BaseDatos();
-        $sql = "INSERT INTO usuario (usnombre, uspass, usmail, usdeshabilitado) VALUES ('" . $this->getUsNombre() . "','" . $this->getUsPass() . "','" . $this->getUsMail() . "','" . $this->getUsDeshabilitado() . "');";
-        //echo $sql;
+        $sql = "INSERT INTO usuario (usnombre, uspass, usmail, usdeshabilitado) VALUES ('{$this->getUsNombre()}','{$this->getUsPass()}','{$this->getUsMail()}', NULL)";
+
         if ($base->Iniciar()) {
 
             if ($elid = $base->Ejecutar($sql)) {
@@ -148,9 +148,18 @@ class Usuario
     {
         $resp = false;
         $base = new BaseDatos();
-        $sql = "UPDATE usuario SET usnombre= '{$this->getUsNombre()}', uspass= '{$this->getUsPass()}', usmail='{$this->getUsMail()}', usdeshabilitado='{$this->getUsDeshabilitado()}'";
-        $sql .= " WHERE idusuario= {$this->getIdUsuario()}";
+
+        if (is_null($this->getUsDeshabilitado())) {
+            $deshabilitado = "NULL";
+        } else {
+            $deshabilitado = "'{$this->getUsDeshabilitado()}'";
+        }
+
+        $sql = "UPDATE usuario SET usnombre= '{$this->getUsNombre()}', uspass= '{$this->getUsPass()}', usmail='{$this->getUsMail()}', usdeshabilitado=" . $deshabilitado;
+        $sql .= " WHERE idusuario= {$this->getIdUsuario()};";
         //echo $sql;
+
+        var_dump($sql);
 
         if ($base->Iniciar()) {
 
@@ -163,7 +172,6 @@ class Usuario
         } else {
             $this->setmensajeoperacion("usuario->modificar: " . $base->getError());
         }
-        var_dump($sql);
         return $resp;
     }
 

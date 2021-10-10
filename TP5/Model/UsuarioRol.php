@@ -62,7 +62,7 @@ class UsuarioRol
     {
         $resp = false;
         $base = new BaseDatos();
-        $sql = "SELECT * FROM usuariorol WHERE idusuario= " . $this->getObjUsuario()->getIdUsuario() . " AND idrol= " . $this->getObjRol()->getIdrol();
+        $sql = "SELECT * FROM usuariorol WHERE idusuario= " . $this->getObjUsuario() . " AND idrol= " . $this->getObjRol();
         //echo $sql;
 
         if ($base->Iniciar()) {
@@ -122,10 +122,10 @@ class UsuarioRol
     {
         $resp = false;
         $base = new BaseDatos();
-        $sql = " UPDATE usuariorol SET ";
+        $sql = "UPDATE usuariorol SET ";
         $sql .= " idrol = " . $this->getObjRol()->getIdrol();
         $sql .= " WHERE idusuario =" . $this->getObjUsuario()->getIdUsuario();
-        echo $sql;
+
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
                 $resp = true;
@@ -163,11 +163,11 @@ class UsuarioRol
         $arreglo = array();
         $base = new BaseDatos();
         $sql = "SELECT * FROM usuariorol ";
-        //echo $sql;
+
         if ($parametro != "") {
             $sql .= 'WHERE ' . $parametro;
         }
-        //  echo $sql;
+
 
         $res = $base->Ejecutar($sql);
         if ($res > -1) {
