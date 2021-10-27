@@ -1,5 +1,4 @@
 <?php
-include_once "../config.php";
 
 class QRController
 {
@@ -9,12 +8,6 @@ class QRController
         $res = array('resultado' => null,
             'error' => "");
 
-        if (isset($datos['errorLevel'])) {
-            $errorLevel = $datos['errorLevel'];
-        } else {
-            $res['error'] = "ERROR AL GENERAR EL CODIGO QR";
-
-        }
 
         if (isset($datos['telefono'])) {
             $telefono = $datos['telefono'];
@@ -30,14 +23,14 @@ class QRController
         }
 
         if ($res['error'] == "") {
-            $outdir = $ROOT . "/View/imagen";
+            $outdir = $GLOBALS['ROOT'] . "View/imagen/";
 
             $output_data = 'https://wa.me/' . $telefono . '/?text=' . urlencode($msg);
 
-            $archivo = $outdir . md5($output_data . '|' . $errorLevel) . '.png';
+            $archivo = $outdir . md5($output_data) . '.png';
 
-            QRcode::png($output_data, $archivo, $errorLevel);
-            //QRcdr::svg($output_data, $archivo, $errorLevel);
+            QRcode::png($output_data, $archivo, QR_ECLEVEL_H, 8);
+            //QRcdr::svg($output_data, $archivo);
 
 
             $res['resultado'] = basename($archivo);

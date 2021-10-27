@@ -122,7 +122,7 @@
     define('QR_FIND_FROM_RANDOM', 2);                                                       // if false, checks all masks available, otherwise value tells count of masks need to be checked, mask id are got randomly
     define('QR_DEFAULT_MASK', 2);                                                               // when QR_FIND_BEST_MASK === false
                                                   
-    define('QR_PNG_MAXIMUM_SIZE',  1024);                                                       // maximum allowed png image width (in pixels), tune to make sure GD and PHP can handle such big images
+    define('QR_PNG_MAXIMUM_SIZE',  1024);                                                       // maximum allowed png imagen width (in pixels), tune to make sure GD and PHP can handle such big images
                                                   
 
 
@@ -943,12 +943,12 @@
             $image = self::image($frame, $pixelPerPoint, $outerFrame);
             
             if ($filename === false) {
-                Header("Content-type: image/png");
+                Header("Content-type: imagen/png");
                 ImagePng($image);
             } else {
                 if($saveandprint===TRUE){
                     ImagePng($image, $filename);
-                    header("Content-type: image/png");
+                    header("Content-type: imagen/png");
                     ImagePng($image);
                 }else{
                     ImagePng($image, $filename);
@@ -964,7 +964,7 @@
             $image = self::image($frame, $pixelPerPoint, $outerFrame);
             
             if ($filename === false) {
-                Header("Content-type: image/jpeg");
+                Header("Content-type: imagen/jpeg");
                 ImageJpeg($image, null, $q);
             } else {
                 ImageJpeg($image, $filename, $q);            
