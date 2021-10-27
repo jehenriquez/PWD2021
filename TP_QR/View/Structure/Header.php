@@ -36,7 +36,7 @@ include_once("../../config.php");
             <div class="collapse navbar-collapse" id="navbarExample01">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item active">
-                        <a class="nav-link" aria-current="page" href="../index/paginaSeguro.php">TP5</a>
+                        <a class="nav-link" aria-current="page" href="../index/index.php">QR Test</a>
                     </li>
                 </ul>
             </div>

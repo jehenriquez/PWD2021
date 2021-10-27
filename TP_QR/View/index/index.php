@@ -1,57 +1,35 @@
 <?php
 include_once "../Structure/Header.php";
-
+$errorCorrectionLevel = "";
+$matrixPointSize = "";
 ?>
 <div class="container p-5">
-    <form role="form" id="create" class="needs-validation" novalidate>
-        <div class="col-sm-12 mb-2">
-            <div class="row">
-                <div class="col-6 col-md-3">
-
-                    <div class="col-6 col-md-3">
-                        <label>Tamaño</label>
-                        <select name="size" class="custom-select">
-                            <?php
-                            for ($i = 8; $i <= 32; $i += 4) {
-                                $value = $i * 25;
-                                echo '<option value="' . $i . '" ' . ($matrixPointSize == $i ? 'selected' : '') . '>' . $value . '</option>';
-                            }; ?>
-                        </select>
-                    </div>
-
-                    <div class="col-6 col-md-3">
-                        <label>Nivel de corrección de error</label>
-                        <select name="level" class="custom-select">
-                            <option value="L" <?php if ($errorCorrectionLevel == "L") echo "selected"; ?>>
-                            </option>
-                            <option value="M" <?php if ($errorCorrectionLevel == "M") echo "selected"; ?>>
-                            </option>
-                            <option value="Q" <?php if ($errorCorrectionLevel == "Q") echo "selected"; ?>>
-                            </option>
-                            <option value="H" <?php if ($errorCorrectionLevel == "H") echo "selected"; ?>>
-                            </option>
-                        </select>
-                    </div>
-                </div>
+    <form method="post" id="generarQR" class="needs-validation" action="../action/formAction.php"
+          onsubmit="return validar();" novalidate>
+        <div class="form-group lg">
+            <label for="errorLevel">Nivel de corrección de error</label>
+            <div>
+                <select id="errorLevel" name="errorLevel" class="custom-select" required>
+                    <option value="L">L</option>
+                    <option value="M">M</option>
+                    <option value="Q">Q</option>
+                    <option value="H">H</option>
+                </select>
             </div>
-
-            <div class="col-sm-12">
-                <div class="form-group">
-                    <ul class="nav nav-pills nav-fill" role="tablist">
-
-                        <li class="nav-item">
-                            <a class="nav-link"
-                               href="#text" role="tab" data-toggle="tab"><i class="fa fa-align-left"></i>
-                                <span class="d-none d-sm-inline-block">Texto</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"
-                               href="#whatsapp" role="tab" data-toggle="tab"><i class="fa fa-whatsapp"></i>
-                                <span class="d-none d-sm-inline-block">WhatsApp</span></a>
-                        </li>
-                    </ul>
-                </div> <!-- form group -->
-            </div><!-- col sm12-->
+        </div>
+        <div class="form-group p-1">
+            <label for="tel">Número de teléfono</label>
+            <div class="input-group">
+                <input id="tel" name="tel" type="text" class="form-control" required>
+            </div>
+        </div>
+        <div class="form-group p-1">
+            <label for="msg">Mensaje</label>
+            <textarea id="msg" name="msg" cols="40" rows="4" class="form-control" required></textarea>
+        </div>
+        <div class="form-group p-1">
+            <button name="submit" type="submit" class="btn btn-primary">Generar QR</button>
+        </div>
     </form>
 </div>
 

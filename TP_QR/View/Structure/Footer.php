@@ -2,11 +2,6 @@
     <div class="text-center p-4 text-light">
         <div class="row">
             <h6>
-                Leandro Gabriel Fuentes FAI-465
-            </h6>
-        </div>
-        <div class="row">
-            <h6>
                 Matias Ricardo Infante Contreras FAI-1392
             </h6>
         </div>
