@@ -4,7 +4,7 @@ header ("Cache-Control: no-cache, must-revalidate ");*/
 /////////////////////////////
 // CONFIGURACION APP//
 /////////////////////////////
-$PROYECTO = 'PWD2021/TP5/';
+$PROYECTO = 'PWD2021/TP_QR';
 
 //variable que almacena el directorio del proyecto
 $ROOT = $_SERVER['DOCUMENT_ROOT'] . "/$PROYECTO/";

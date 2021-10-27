@@ -18,20 +18,15 @@ function data_submitted()
 
 }
 
-function verEstructura($e)
-{
-    echo "<pre>";
-    print_r($e);
-    echo "</pre>";
-}
 
 function __autoload($class_name)
 {
     //echo "class ".$class_name ;
     $directorios = array(
-        $GLOBALS['ROOT'] . 'Model/',
+        //$GLOBALS['ROOT'] . 'Model/',
         //$GLOBALS['ROOT'] . 'Model/connector/',
         $GLOBALS['ROOT'] . 'Controller/',
+        $GLOBALS['ROOT'].'View/image/',
         //  $GLOBALS['ROOT'].'util/class/',
     );
     //print_object($directorys) ;
